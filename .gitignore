@@ -1,0 +1,26 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.DotSettings.user
+TestResults/
+
+# Node / frontend
+node_modules/
+dist/
+.vite/
+*.log
+
+# Entorno y secretos
+.env
+.env.local
+*.pfx
+
+# IDEs y sistema
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+Thumbs.db
