@@ -1,12 +1,16 @@
 import { Link, NavLink } from 'react-router-dom';
-import { Search, Bell, CircleUser } from 'lucide-react';
+import { Bookmark, Bell, CircleUser } from 'lucide-react';
 import { Logo } from './Logo';
+import { useSavedJobs } from '../context/SavedJobsContext';
 
 export function Navbar() {
+  const { savedIds } = useSavedJobs();
+
   const navItems = [
-    { to: '/empleos', label: 'Empleos' },
-    { to: '/empresas', label: 'Empresas' },
-    { to: '/sueldos', label: 'Sueldos' },
+    { to: '/', label: 'Inicio', end: true },
+    { to: '/empleos', label: 'Empleos', end: false },
+    { to: '/empresas', label: 'Empresas', end: false },
+    { to: '/sueldos', label: 'Sueldos', end: false },
   ];
 
   return (
@@ -24,12 +28,13 @@ export function Navbar() {
         {/* Zona central: Navegación principal (desktop) */}
         <nav
           aria-label="Navegación principal"
-          className="hidden md:flex items-center h-full gap-12 lg:gap-[72px] justify-self-center"
+          className="hidden md:flex items-center h-full gap-8 lg:gap-12 justify-self-center"
         >
           {navItems.map((item) => (
             <NavLink
               key={item.to}
               to={item.to}
+              end={item.end}
               className={({ isActive }) =>
                 `relative h-full inline-flex items-center text-[16px] font-semibold transition-colors ${
                   isActive
@@ -53,15 +58,27 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Zona derecha: Acciones globales (objetivos táctiles >= 44 px) */}
+        {/* Zona derecha: Guardados, notificaciones y cuenta */}
         <div className="flex items-center gap-1 sm:gap-2 justify-self-end">
-          <Link
-            to="/empleos"
-            className="h-11 px-3 inline-flex items-center gap-2 text-[15px] font-semibold text-ink hover:bg-field rounded-sm transition-colors"
+          <NavLink
+            to="/guardados"
+            aria-label={`Empleos guardados (${savedIds.length})`}
+            title="Empleos guardados"
+            className={({ isActive }) =>
+              `relative w-11 h-11 inline-flex items-center justify-center rounded-sm transition-colors ${
+                isActive
+                  ? 'bg-mint-50 text-green-700'
+                  : 'text-ink hover:bg-field'
+              }`
+            }
           >
-            <Search size={18} strokeWidth={1.8} aria-hidden="true" />
-            <span className="hidden sm:inline">Buscar</span>
-          </Link>
+            <Bookmark size={20} strokeWidth={1.8} aria-hidden="true" />
+            {savedIds.length > 0 && (
+              <span className="absolute top-1.5 right-1.5 inline-flex h-4 min-w-[16px] items-center justify-center rounded-full bg-green-700 px-1 text-[10px] font-bold text-white">
+                {savedIds.length}
+              </span>
+            )}
+          </NavLink>
 
           <button
             type="button"
@@ -90,6 +107,7 @@ export function Navbar() {
           <NavLink
             key={item.to}
             to={item.to}
+            end={item.end}
             className={({ isActive }) =>
               `relative h-full inline-flex items-center text-[15px] font-semibold ${
                 isActive ? 'text-green-700' : 'text-ink'

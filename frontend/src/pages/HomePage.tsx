@@ -2,8 +2,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, MapPin, Zap, Star, X } from 'lucide-react';
 import { CompanyAvatar } from '../components/CompanyAvatar';
+import { MOCK_JOBS } from '../data/mockJobs';
 import {
-  MOCK_JOBS,
   MOCK_COMPANIES,
   formatSalaryRangeMXN,
   formatCompactCount,
@@ -267,7 +267,7 @@ export function HomePage() {
                       Postulación externa
                     </span>
                   )}
-                  <span className="text-[13px] text-ink-2">{job.postedAt}</span>
+                  <span className="text-[13px] text-ink-2">{job.postedShortLabel}</span>
                 </div>
               </Link>
             ))}
