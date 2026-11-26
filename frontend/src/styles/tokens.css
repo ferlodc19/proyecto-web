@@ -1,0 +1,51 @@
+:root {
+  /* Marca */
+  --jb-green-500: #0CAA41;
+  --jb-green-600: #0A8A3A;
+  --jb-green-700: #0A7A33;
+  --jb-green-800: #06652A;
+  --jb-green-200: #B6F0C8;
+  --jb-mint: #E9F6EE;
+  --jb-mint-50: #F3FBF6;
+
+  /* Neutros */
+  --jb-black: #000000;
+  --jb-ink: #20262E;
+  --jb-ink-2: #4A525C;
+  --jb-ink-3: #5B6474;
+  --jb-ink-4: #9AA1AB;
+  --jb-line: #E3E5E8;
+  --jb-line-strong: #D5D8DD;
+  --jb-line-input: #8A919B;
+  --jb-field: #F1F2F4;
+  --jb-white: #FFFFFF;
+
+  /* Tipografía */
+  --jb-font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --jb-font-brand: Manrope, var(--jb-font);
+
+  /* Forma */
+  --jb-radius-xs: 6px;
+  --jb-radius-sm: 10px;
+  --jb-radius-md: 12px;
+  --jb-radius-lg: 16px;
+  --jb-radius-pill: 999px;
+  --jb-shadow-card: 0 4px 12px rgba(32, 38, 46, 0.08);
+  --jb-shadow-soft: 0 4px 12px rgba(32, 38, 46, 0.06);
+
+  /* Layout */
+  --jb-container: 1440px;
+  --jb-gutter: 64px;
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --jb-gutter: 24px;
+  }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --jb-gutter: 16px;
+  }
+}
