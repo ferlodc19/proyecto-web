@@ -4,6 +4,7 @@ import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { JobsPage } from './pages/JobsPage';
 import { SavedJobsPage } from './pages/SavedJobsPage';
+import { AccessPage } from './pages/AccessPage';
 import { SavedJobsProvider } from './context/SavedJobsContext';
 
 function ComingSoon({ title }: { title: string }) {
@@ -41,7 +42,7 @@ export function App() {
               />
               <Route path="/sueldos" element={<ComingSoon title="Sueldos" />} />
               <Route path="/sueldos/:puesto" element={<ComingSoon title="Sueldos" />} />
-              <Route path="/acceso" element={<ComingSoon title="Acceso y registro" />} />
+              <Route path="/acceso" element={<AccessPage />} />
             </Routes>
           </main>
           <Footer />
