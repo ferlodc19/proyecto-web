@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
+import { JobsPage } from './pages/JobsPage';
+import { SavedJobsPage } from './pages/SavedJobsPage';
+import { SavedJobsProvider } from './context/SavedJobsContext';
 
 function ComingSoon({ title }: { title: string }) {
   return (
@@ -14,34 +17,37 @@ function ComingSoon({ title }: { title: string }) {
 
 export function App() {
   return (
-    <BrowserRouter>
-      <div className="min-h-screen flex flex-col bg-white text-ink">
-        <Navbar />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/empleos" element={<ComingSoon title="Empleos" />} />
-            <Route path="/empresas" element={<ComingSoon title="Empresas" />} />
-            <Route
-              path="/empresas/:slug"
-              element={<ComingSoon title="Perfil de empresa" />}
-            />
-            <Route
-              path="/empresas/:slug/resenas"
-              element={<ComingSoon title="Reseñas de empresa" />}
-            />
-            <Route
-              path="/empresas/:slug/entrevistas"
-              element={<ComingSoon title="Entrevistas" />}
-            />
-            <Route path="/sueldos" element={<ComingSoon title="Sueldos" />} />
-            <Route path="/sueldos/:puesto" element={<ComingSoon title="Sueldos" />} />
-            <Route path="/acceso" element={<ComingSoon title="Acceso y registro" />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </BrowserRouter>
+    <SavedJobsProvider>
+      <BrowserRouter>
+        <div className="min-h-screen flex flex-col bg-white text-ink">
+          <Navbar />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/empleos" element={<JobsPage />} />
+              <Route path="/guardados" element={<SavedJobsPage />} />
+              <Route path="/empresas" element={<ComingSoon title="Empresas" />} />
+              <Route
+                path="/empresas/:slug"
+                element={<ComingSoon title="Perfil de empresa" />}
+              />
+              <Route
+                path="/empresas/:slug/resenas"
+                element={<ComingSoon title="Reseñas de empresa" />}
+              />
+              <Route
+                path="/empresas/:slug/entrevistas"
+                element={<ComingSoon title="Entrevistas" />}
+              />
+              <Route path="/sueldos" element={<ComingSoon title="Sueldos" />} />
+              <Route path="/sueldos/:puesto" element={<ComingSoon title="Sueldos" />} />
+              <Route path="/acceso" element={<ComingSoon title="Acceso y registro" />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </SavedJobsProvider>
   );
 }
 
