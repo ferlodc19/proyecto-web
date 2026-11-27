@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Bookmark, Trash2 } from 'lucide-react';
 import { MOCK_JOBS } from '../data/mockJobs';
-import { useSavedJobs } from '../context/SavedJobsContext';
+import { useSavedJobs } from '../context/useSavedJobs';
 
 function formatCurrencyMXN(amount: number): string {
   return new Intl.NumberFormat('es-MX', {

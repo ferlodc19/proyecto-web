@@ -1,22 +1,7 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  type ReactNode,
-} from 'react';
-
-interface SavedJobsContextValue {
-  savedIds: string[];
-  toggleSaveJob: (jobId: string) => void;
-  isJobSaved: (jobId: string) => boolean;
-}
+import { useState, useEffect, type ReactNode } from 'react';
+import { SavedJobsContext } from './SavedJobsContextObject';
 
 const STORAGE_KEY = 'jobly_saved_job_ids';
-
-const SavedJobsContext = createContext<SavedJobsContextValue | undefined>(
-  undefined
-);
 
 export function SavedJobsProvider({ children }: { children: ReactNode }) {
   const [savedIds, setSavedIds] = useState<string[]>(() => {
@@ -51,12 +36,4 @@ export function SavedJobsProvider({ children }: { children: ReactNode }) {
       {children}
     </SavedJobsContext.Provider>
   );
-}
-
-export function useSavedJobs() {
-  const ctx = useContext(SavedJobsContext);
-  if (!ctx) {
-    throw new Error('useSavedJobs debe usarse dentro de SavedJobsProvider');
-  }
-  return ctx;
 }

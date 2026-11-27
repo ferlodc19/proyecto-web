@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import { Bookmark, Bell, CircleUser } from 'lucide-react';
 import { Logo } from './Logo';
-import { useSavedJobs } from '../context/SavedJobsContext';
+import { useSavedJobs } from '../context/useSavedJobs';
 
 export function Navbar() {
   const { savedIds } = useSavedJobs();

@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { MOCK_JOBS, type JobWithCompanyMeta } from '../data/mockJobs';
 import type { WorkModality } from '../types/jobly';
-import { useSavedJobs } from '../context/SavedJobsContext';
+import { useSavedJobs } from '../context/useSavedJobs';
 
 function formatCurrencyMXN(amount: number): string {
   return new Intl.NumberFormat('es-MX', {
