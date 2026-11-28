@@ -4,6 +4,8 @@ import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { JobsPage } from './pages/JobsPage';
 import { SavedJobsPage } from './pages/SavedJobsPage';
+import { CompaniesPage } from './pages/CompaniesPage';
+import { CompanyProfilePage } from './pages/CompanyProfilePage';
 import { SavedJobsProvider } from './context/SavedJobsContext';
 
 function ComingSoon({ title }: { title: string }) {
@@ -26,10 +28,10 @@ export function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/empleos" element={<JobsPage />} />
               <Route path="/guardados" element={<SavedJobsPage />} />
-              <Route path="/empresas" element={<ComingSoon title="Empresas" />} />
+              <Route path="/empresas" element={<CompaniesPage />} />
               <Route
                 path="/empresas/:slug"
-                element={<ComingSoon title="Perfil de empresa" />}
+                element={<CompanyProfilePage />}
               />
               <Route
                 path="/empresas/:slug/resenas"
